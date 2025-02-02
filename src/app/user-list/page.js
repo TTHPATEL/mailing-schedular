@@ -2,7 +2,11 @@
 import { useEffect, useState } from "react";
 
 export default function userList() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    userlist: [],
+    categorylist: [],
+    scheduleMail: [],
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,7 +48,7 @@ export default function userList() {
             </tr>
           </thead>
           <tbody>
-            {data.map((u) => (
+            {data.userlist.map((u) => (
               <tr
                 key={u.id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
@@ -57,7 +61,7 @@ export default function userList() {
                 </th>
                 <td className="px-6 py-4">{u.name}</td>
                 <td className="px-6 py-4">{u.email}</td>
-                <td className="px-6 py-4">{u.category}</td>
+                <td className="px-6 py-4">{u.IDofcategoryList}</td>
               </tr>
             ))}
           </tbody>
