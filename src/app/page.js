@@ -53,7 +53,7 @@ export default function Home() {
     if (res.ok) {
       const newUser = await res.json();
       console.log("New User Added STATUS:", newUser);
-      router.push("/scheduled-mail");
+      router.push("scheduled-mail");
     } else {
       console.log("Error submitting the form");
     }
