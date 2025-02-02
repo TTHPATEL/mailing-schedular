@@ -60,7 +60,7 @@ export default function Home() {
           htmlFor="template"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
-          Select Template ( Mailerss )
+          Select Template ( Mailer )
         </label>
         <select
           id="template"
