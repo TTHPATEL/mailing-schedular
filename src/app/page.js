@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   let [templist, setTemplist] = useState([]);
   let [categorylist, setCategorylist] = useState([]);
   let [userlists, setUserlists] = useState([]);
@@ -50,7 +53,7 @@ export default function Home() {
     if (res.ok) {
       const newUser = await res.json();
       console.log("New User Added STATUS:", newUser);
-      // router.push("/scheduled-mail'");
+      router.push("/scheduled-mail");
     } else {
       console.log("Error submitting the form");
     }
@@ -63,6 +66,7 @@ export default function Home() {
       </div>
     );
   }
+
   return (
     <div style={{ margin: 120 }}>
       <form action={Addscheduledmail} className="max-w-sm mx-auto">

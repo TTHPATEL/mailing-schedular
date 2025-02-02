@@ -18,6 +18,7 @@ export default function TemplateList() {
       </div>
     );
   }
+
   return (
     <>
       <div className="relative overflow-x-auto max-w-lg mx-auto mt-10 bg-white shadow-lg rounded-lg">
