@@ -6,6 +6,7 @@ export default function Home() {
   let [templist, setTemplist] = useState([]);
   let [categorylist, setCategorylist] = useState([]);
   let [userlists, setUserlists] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3012/api/templates")
@@ -16,7 +17,8 @@ export default function Home() {
       .then((data) => setCategorylist(data));
     fetch("http://localhost:3012/api/userlist")
       .then((data) => data.json())
-      .then((data) => setUserlists(data));
+      .then((data) => setUserlists(data))
+      .finally(() => setLoading(false));
   }, []);
   // console.log(userlists);
 
@@ -52,6 +54,14 @@ export default function Home() {
     } else {
       console.log("Error submitting the form");
     }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+      </div>
+    );
   }
   return (
     <div style={{ margin: 120 }}>
