@@ -2,17 +2,13 @@
 import { useEffect, useState } from "react";
 
 export default function ScheduledMail() {
-  const [data, setData] = useState({
-    userlist: [],
-    categorylist: [],
-    scheduleMail: [],
-  });
+  const [scheduleMailData, setScheduleMailData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/userlist")
+    fetch("http://localhost:3012/api/scheduleMail")
       .then((res) => res.json())
-      .then((data) => setData(data))
+      .then((data) => setScheduleMailData(data))
       .finally(() => setLoading(false));
   }, []);
 
@@ -48,7 +44,7 @@ export default function ScheduledMail() {
             </tr>
           </thead>
           <tbody>
-            {data.scheduleMail.map((u) => (
+            {scheduleMailData.map((u) => (
               <tr
                 key={u.scheduleMailID}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"

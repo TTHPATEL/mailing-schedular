@@ -4,38 +4,38 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   let [templist, setTemplist] = useState([]);
-  let [userlists, setUserlist] = useState({
-    userlist: [],
-    categorylist: [],
-    scheduleMail: [],
-  });
+  let [categorylist, setCategorylist] = useState([]);
+  let [userlists, setUserlists] = useState([]);
 
   useEffect(() => {
-    fetch("/api/template-list")
+    fetch("http://localhost:3012/api/templates")
       .then((data) => data.json())
       .then((data) => setTemplist(data));
-
-    fetch("api/userlist")
+    fetch("http://localhost:3012/api/categorylist")
       .then((data) => data.json())
-      .then((data) => setUserlist(data));
+      .then((data) => setCategorylist(data));
+    fetch("http://localhost:3012/api/userlist")
+      .then((data) => data.json())
+      .then((data) => setUserlists(data));
   }, []);
+  // console.log(userlists);
 
   async function Addscheduledmail(formData) {
     const template = formData.get("template");
     const recipient = formData.get("recipient");
     const schedule = formData.get("schedule");
 
-    const categoryID = userlists.categorylist.find(
-      (category) => category.categoryName === recipient
+    const categoryID = categorylist.find(
+      (c) => c.categoryName === recipient
     )?.categoryID;
 
-    const filteredUsers = userlists.userlist
+    const filteredUsers = userlists
       .filter((user) => user.IDofcategoryList === categoryID)
       .map((user) => user.email);
 
     console.log(filteredUsers);
 
-    const res = await fetch("http://localhost:3000/api/userlist", {
+    const res = await fetch("http://localhost:3012/api/scheduleMail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -83,7 +83,7 @@ export default function Home() {
           name="recipient"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          {userlists.categorylist.map((ulist) => (
+          {categorylist.map((ulist) => (
             <option key={ulist.categoryID}>{ulist.categoryName}</option>
           ))}
         </select>
