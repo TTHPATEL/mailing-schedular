@@ -16,12 +16,18 @@ export default function ScheduledmailedEdit() {
   useEffect(() => {
     // Fetch all required data
     Promise.all([
-      fetch("http://localhost:3012/api/templates").then((res) => res.json()),
-      fetch("http://localhost:3012/api/categorylist").then((res) => res.json()),
-      fetch("http://localhost:3012/api/userlist").then((res) => res.json()),
-      fetch(`http://localhost:3012/api/scheduleMail/${id}`).then((res) =>
-        res.json()
+      fetch("https://backend-mail-schedule.onrender.com/api/templates").then(
+        (res) => res.json()
       ),
+      fetch("https://backend-mail-schedule.onrender.com/api/categorylist").then(
+        (res) => res.json()
+      ),
+      fetch("https://backend-mail-schedule.onrender.com/api/userlist").then(
+        (res) => res.json()
+      ),
+      fetch(
+        `https://backend-mail-schedule.onrender.com/api/scheduleMail/${id}`
+      ).then((res) => res.json()),
     ]).then(([templates, categories, users, scheduledMailData]) => {
       setTemplist(templates);
       setCategorylist(categories);
@@ -50,11 +56,14 @@ export default function ScheduledmailedEdit() {
       recipientGroupName: userSelectCategory,
     };
 
-    const res = await fetch(`http://localhost:3012/api/scheduleMail/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedData),
-    });
+    const res = await fetch(
+      `https://backend-mail-schedule.onrender.com/api/scheduleMail/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      }
+    );
 
     if (res.ok) {
       const newUser = await res.json();

@@ -8,7 +8,7 @@ export default function ScheduledMail({ scheduleMailData }) {
   const router = useRouter();
 
   function Delete(IDofschedule) {
-    fetch("http://localhost:3012/delete/scheduleMail", {
+    fetch("https://backend-mail-schedule.onrender.com/delete/scheduleMail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ scheduleMailID: IDofschedule }),

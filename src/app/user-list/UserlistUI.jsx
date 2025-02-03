@@ -21,15 +21,18 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
 
     // console.log(filteredUsers);
 
-    const res = await fetch("http://localhost:3012/api/userlist", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: name,
-        email: emailid,
-        IDofcategoryList: categoryID,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-mail-schedule.onrender.com/api/userlist",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          email: emailid,
+          IDofcategoryList: categoryID,
+        }),
+      }
+    );
 
     if (res.ok) {
       const newUser = await res.json();
@@ -41,7 +44,7 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
   }
 
   function Delete(IDofuser) {
-    fetch("http://localhost:3012/delete/user", {
+    fetch("https://backend-mail-schedule.onrender.com/delete/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: IDofuser }),

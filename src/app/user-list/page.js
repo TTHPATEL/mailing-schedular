@@ -2,10 +2,14 @@ import UserlistUI from "./UserlistUI";
 
 export default async function userList() {
   const Userlistdata = await (
-    await fetch("http://localhost:3012/api/userlist", { cache: "no-cache" })
+    await fetch("https://backend-mail-schedule.onrender.com/api/userlist", {
+      cache: "no-cache",
+    })
   ).json();
   const categorylist = await (
-    await fetch("http://localhost:3012/api/categorylist", { cache: "no-cache" })
+    await fetch("https://backend-mail-schedule.onrender.com/api/categorylist", {
+      cache: "no-cache",
+    })
   ).json();
 
   function Adduser() {}
