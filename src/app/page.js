@@ -11,19 +11,13 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/templates"
-    )
+    fetch("http://localhost:3013/api/templates")
       .then((data) => data.json())
       .then((data) => setTemplist(data));
-    fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/categorylist"
-    )
+    fetch("http://localhost:3013/api/categorylist")
       .then((data) => data.json())
       .then((data) => setCategorylist(data));
-    fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/userlist"
-    )
+    fetch("http://localhost:3013/api/userlist")
       .then((data) => data.json())
       .then((data) => setUserlists(data))
       .finally(() => setLoading(false));
@@ -42,19 +36,16 @@ export default function Home() {
       .filter((user) => user.IDofcategoryList === categoryID)
       .map((user) => user.email);
 
-    const res = await fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/scheduleMail",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          template: template,
-          schedule: schedule,
-          recipient: filteredUsers,
-          recipientGroupName: userSelectCategory,
-        }),
-      }
-    );
+    const res = await fetch("http://localhost:3013/api/scheduleMail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        template: template,
+        schedule: schedule,
+        recipient: filteredUsers,
+        recipientGroupName: userSelectCategory,
+      }),
+    });
 
     if (res.ok) {
       const resdata = await res.json();
