@@ -36,10 +36,16 @@ export default function ScheduledMail({ scheduleMailData }) {
                 Template Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Recipient
+                Recipient Group Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Recipient Mail ID
               </th>
               <th scope="col" className="px-6 py-3">
                 Schedule
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Status
               </th>
               <th scope="col" className="px-6 py-3">
                 Edit
@@ -62,8 +68,10 @@ export default function ScheduledMail({ scheduleMailData }) {
                   {u.scheduleMailID}
                 </th>
                 <td className="px-6 py-4">{u.template}</td>
+                <td className="px-6 py-4">{u.recipientGroupName}</td>
                 <td className="px-6 py-4">{u.recipient.join(" , ")}</td>
                 <td className="px-6 py-4">{u.schedule}</td>
+                <td className="px-6 py-4">{u.status}</td>
                 <td className="px-7 py-4 ">
                   <Link href={`/scheduled-mail-edit/${u.scheduleMailID}`}>
                     <BiSolidEdit size={20} />

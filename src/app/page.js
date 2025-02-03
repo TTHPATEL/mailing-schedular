@@ -27,11 +27,11 @@ export default function Home() {
 
   async function Addscheduledmail(formData) {
     const template = formData.get("template");
-    const recipient = formData.get("recipient");
+    const userSelectCategory = formData.get("recipient");
     const schedule = formData.get("schedule");
 
     const categoryID = categorylist.find(
-      (c) => c.categoryName === recipient
+      (c) => c.categoryName === userSelectCategory
     )?.categoryID;
 
     const filteredUsers = userlists
@@ -47,6 +47,7 @@ export default function Home() {
         template: template,
         schedule: schedule,
         recipient: filteredUsers,
+        recipientGroupName: userSelectCategory,
       }),
     });
 
@@ -119,7 +120,7 @@ export default function Home() {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded center"
         >
-          Add Schedule
+          ADD SCHEDULE
         </button>
       </form>
     </div>
