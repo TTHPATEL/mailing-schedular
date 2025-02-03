@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import moment from "moment-timezone"; // Import moment-timezone
 
 export default function ScheduledMail({ scheduleMailData }) {
   const router = useRouter();
@@ -21,7 +22,29 @@ export default function ScheduledMail({ scheduleMailData }) {
 
     router.push("scheduled-mail");
   }
+  useEffect(() => {
+    const checkScheduledTimes = () => {
+      const currentTime = moment.utc(); // Get the current time in UTC
 
+      scheduleMailData.forEach((mail) => {
+        const scheduleTime = moment.utc(mail.schedule); // Convert the schedule to UTC time
+
+        if (scheduleTime.isBefore(currentTime) && mail.status !== "Sent") {
+          console.log(`Sending mail for ${mail.scheduleMailID}`);
+
+          mail.status = "Sent";
+
+          router.reload();
+        }
+      });
+    };
+
+    // Set interval to check every second
+    const interval = setInterval(checkScheduledTimes, 1000);
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, [scheduleMailData, router]);
   return (
     <>
       <div className="relative overflow-x-auto max-w-6xl mx-auto mt-[25px] bg-white shadow-lg rounded-lg">
