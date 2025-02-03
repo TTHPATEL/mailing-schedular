@@ -3,7 +3,7 @@ import UserlistUI from "./UserlistUI";
 export default async function userList() {
   const Userlistdata = await (
     await fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/userlist",
+      "https://backend-mail-schedule-production.up.railway.app//api/userlist",
       {
         cache: "no-cache",
       }
@@ -11,7 +11,7 @@ export default async function userList() {
   ).json();
   const categorylist = await (
     await fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/categorylist",
+      "https://backend-mail-schedule-production.up.railway.app//api/categorylist",
       {
         cache: "no-cache",
       }

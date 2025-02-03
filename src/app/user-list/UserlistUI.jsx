@@ -22,7 +22,7 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
     // console.log(filteredUsers);
 
     const res = await fetch(
-      "https://backend-mail-schedule-production.up.railway.app/api/userlist",
+      "https://backend-mail-schedule-production.up.railway.app//api/userlist",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,7 +45,7 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
 
   function Delete(IDofuser) {
     fetch(
-      "https://backend-mail-schedule-production.up.railway.app/delete/user",
+      "https://backend-mail-schedule-production.up.railway.app//delete/user",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
