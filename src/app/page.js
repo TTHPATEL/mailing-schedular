@@ -12,17 +12,17 @@ export default function Home() {
 
   useEffect(() => {
     fetch(
-      "https://backend-mail-schedule-production.up.railway.app//api/templates"
+      "https://backend-mail-schedule-production.up.railway.app/api/templates"
     )
       .then((data) => data.json())
       .then((data) => setTemplist(data));
     fetch(
-      "https://backend-mail-schedule-production.up.railway.app//api/categorylist"
+      "https://backend-mail-schedule-production.up.railway.app/api/categorylist"
     )
       .then((data) => data.json())
       .then((data) => setCategorylist(data));
     fetch(
-      "https://backend-mail-schedule-production.up.railway.app//api/userlist"
+      "https://backend-mail-schedule-production.up.railway.app/api/userlist"
     )
       .then((data) => data.json())
       .then((data) => setUserlists(data))
@@ -43,7 +43,7 @@ export default function Home() {
       .map((user) => user.email);
 
     const res = await fetch(
-      "https://backend-mail-schedule-production.up.railway.app//api/scheduleMail",
+      "https://backend-mail-schedule-production.up.railway.app/api/scheduleMail",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

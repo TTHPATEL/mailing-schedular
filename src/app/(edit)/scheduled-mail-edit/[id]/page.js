@@ -17,16 +17,16 @@ export default function ScheduledmailedEdit() {
     // Fetch all required data
     Promise.all([
       fetch(
-        "https://backend-mail-schedule-production.up.railway.app//api/templates"
+        "https://backend-mail-schedule-production.up.railway.app/api/templates"
       ).then((res) => res.json()),
       fetch(
-        "https://backend-mail-schedule-production.up.railway.app//api/categorylist"
+        "https://backend-mail-schedule-production.up.railway.app/api/categorylist"
       ).then((res) => res.json()),
       fetch(
-        "https://backend-mail-schedule-production.up.railway.app//api/userlist"
+        "https://backend-mail-schedule-production.up.railway.app/api/userlist"
       ).then((res) => res.json()),
       fetch(
-        `https://backend-mail-schedule-production.up.railway.app//api/scheduleMail/${id}`
+        `https://backend-mail-schedule-production.up.railway.app/api/scheduleMail/${id}`
       ).then((res) => res.json()),
     ]).then(([templates, categories, users, scheduledMailData]) => {
       setTemplist(templates);
@@ -57,7 +57,7 @@ export default function ScheduledmailedEdit() {
     };
 
     const res = await fetch(
-      `https://backend-mail-schedule-production.up.railway.app//api/scheduleMail/${id}`,
+      `https://backend-mail-schedule-production.up.railway.app/api/scheduleMail/${id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

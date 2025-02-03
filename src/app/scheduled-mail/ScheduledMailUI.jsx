@@ -9,7 +9,7 @@ export default function ScheduledMail({ scheduleMailData }) {
 
   function Delete(IDofschedule) {
     fetch(
-      "https://backend-mail-schedule-production.up.railway.app//delete/scheduleMail",
+      "https://backend-mail-schedule-production.up.railway.app/delete/scheduleMail",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
