@@ -2,63 +2,127 @@
 import Link from "next/link";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-export default function UserlistUI({ Userlistdata }) {
-  return (
-    <div className="relative overflow-x-auto max-w-5xl mx-auto mt-[25px] bg-white shadow-lg rounded-lg">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-lg">
-        <caption className="text-lg font-semibold text-gray-900 dark:text-white py-4 bg-gray-100 dark:bg-gray-800 rounded-t-lg">
-          User List
-        </caption>
+export default function UserlistUI({ Userlistdata, categorylist }) {
+  function Adduser() {}
 
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="px-6 py-3">
-              User ID
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Name
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Email
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Category type
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Edit
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Delete
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {Userlistdata.map((u) => (
-            <tr
-              key={u.id}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
+  return (
+    <>
+      <div className="flex justify-center w-full">
+        <form action={Adduser} className="flex items-center space-x-4 p-4">
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-900 dark:text-white"
             >
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                {u.id}
+              Enter Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+
+          {/* Second Input Field */}
+          <div>
+            <label
+              htmlFor="emailid"
+              className="block text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Enter Mail ID
+            </label>
+            <input
+              type="text"
+              id="emailid"
+              name="emailid"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="recipient"
+              className="block text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Select Recipient List
+            </label>
+            <select
+              id="recipient"
+              name="recipient"
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              {categorylist.map((ulist) => (
+                <option key={ulist.categoryID}>{ulist.categoryName}</option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+          >
+            ADD USER
+          </button>
+        </form>
+      </div>
+
+      <div className="relative overflow-x-auto max-w-5xl mx-auto mt-[25px] bg-white shadow-lg rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-lg">
+          <caption className="text-lg font-semibold text-gray-900 dark:text-white py-4 bg-gray-100 dark:bg-gray-800 rounded-t-lg">
+            User List
+          </caption>
+
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                User ID
               </th>
-              <td className="px-6 py-4">{u.name}</td>
-              <td className="px-6 py-4">{u.email}</td>
-              <td className="px-6 py-4">{u.IDofcategoryList}</td>
-              <td className="px-7 py-4 ">
-                <Link href={`/scheduled-mail-edit/${u.id}`}>
-                  <BiSolidEdit size={20} />
-                </Link>
-              </td>
-              <td className="px-9 py-4 ">
-                <MdDelete size={20} onClick={() => Delete(u.id)} />
-              </td>
+              <th scope="col" className="px-6 py-3">
+                Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Email
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Group Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Edit
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Delete
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {Userlistdata.map((u) => (
+              <tr
+                key={u.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
+              >
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {u.id}
+                </th>
+                <td className="px-6 py-4">{u.name}</td>
+                <td className="px-6 py-4">{u.email}</td>
+                <td className="px-6 py-4">{u.IDofcategoryList}</td>
+                <td className="px-7 py-4 ">
+                  <Link href={`/scheduled-mail-edit/${u.id}`}>
+                    <BiSolidEdit size={20} />
+                  </Link>
+                </td>
+                <td className="px-9 py-4 ">
+                  <MdDelete size={20} onClick={() => Delete(u.id)} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }

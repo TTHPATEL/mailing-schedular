@@ -4,6 +4,11 @@ export default async function userList() {
   const Userlistdata = await (
     await fetch("http://localhost:3012/api/userlist", { cache: "no-cache" })
   ).json();
+  const categorylist = await (
+    await fetch("http://localhost:3012/api/categorylist", { cache: "no-cache" })
+  ).json();
+
+  function Adduser() {}
   // const [data, setData] = useState({
   //   userlist: [],
   //   categorylist: [],
@@ -27,7 +32,7 @@ export default async function userList() {
   // }
   return (
     <>
-      <UserlistUI Userlistdata={Userlistdata} />
+      <UserlistUI Userlistdata={Userlistdata} categorylist={categorylist} />
     </>
   );
 }
