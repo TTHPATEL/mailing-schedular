@@ -12,8 +12,8 @@ This project is a **Mail Scheduling Feature** built using **Next.js**. The appli
   - Perform **CRUD operations** (Create, Read, Update, Delete) on the scheduled emails 🔄
 
 -  Additionally, there are separate tabs/pages for:
-  - **User Management** (to add users) 👤
-  - **Template Management** (to add and manage templates) 📝
+    - **User Management** (to add users) 👤
+    - **Template Management** (to add and manage templates) 📝
 
 ## Backend:
 - The backend logic for email scheduling and sending is handled by a separate server.
