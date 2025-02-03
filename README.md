@@ -1,5 +1,7 @@
 # Mail Scheduling Feature
 
+You can view the live frontend site here: [Mailing Scheduler Live Site](http://mailing-schedular-production.up.railway.app) 🌐
+
 This project is a **Mail Scheduling Feature** built using **Next.js**. The application consists of both a **frontend UI** and a **backend server**.
 
 ## Frontend:
