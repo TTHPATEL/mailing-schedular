@@ -11,13 +11,19 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://backend-mail-schedule.onrender.com/api/templates")
+    fetch(
+      "https://backend-mail-schedule-production.up.railway.app/api/templates"
+    )
       .then((data) => data.json())
       .then((data) => setTemplist(data));
-    fetch("https://backend-mail-schedule.onrender.com/api/categorylist")
+    fetch(
+      "https://backend-mail-schedule-production.up.railway.app/api/categorylist"
+    )
       .then((data) => data.json())
       .then((data) => setCategorylist(data));
-    fetch("https://backend-mail-schedule.onrender.com/api/userlist")
+    fetch(
+      "https://backend-mail-schedule-production.up.railway.app/api/userlist"
+    )
       .then((data) => data.json())
       .then((data) => setUserlists(data))
       .finally(() => setLoading(false));
@@ -37,7 +43,7 @@ export default function Home() {
       .map((user) => user.email);
 
     const res = await fetch(
-      "https://backend-mail-schedule.onrender.com/api/scheduleMail",
+      "https://backend-mail-schedule-production.up.railway.app/api/scheduleMail",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

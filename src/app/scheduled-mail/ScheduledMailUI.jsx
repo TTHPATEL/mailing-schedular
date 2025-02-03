@@ -8,11 +8,14 @@ export default function ScheduledMail({ scheduleMailData }) {
   const router = useRouter();
 
   function Delete(IDofschedule) {
-    fetch("https://backend-mail-schedule.onrender.com/delete/scheduleMail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ scheduleMailID: IDofschedule }),
-    })
+    fetch(
+      "https://backend-mail-schedule-production.up.railway.app/delete/scheduleMail",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ scheduleMailID: IDofschedule }),
+      }
+    )
       .then((data) => data.json())
       .then((data) => console.log(data));
 
