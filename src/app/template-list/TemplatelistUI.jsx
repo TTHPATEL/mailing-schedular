@@ -43,9 +43,7 @@ export default function TemplatelistUI({ TemplatelistData }) {
                 </Link>
               </td>
               <td className="px-9 py-4 ">
-                <Link href={`#`}>
-                  <MdDelete size={20} />
-                </Link>
+                <MdDelete size={20} className="cursor-pointer" />
               </td>
             </tr>
           ))}

@@ -168,9 +168,11 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
                   </Link>
                 </td>
                 <td className="px-9 py-4 ">
-                  <Link>
-                    <MdDelete size={20} onClick={() => Delete(u.id)} />
-                  </Link>
+                  <MdDelete
+                    size={20}
+                    onClick={() => Delete(u.id)}
+                    className="cursor-pointer"
+                  />
                 </td>
               </tr>
             ))}

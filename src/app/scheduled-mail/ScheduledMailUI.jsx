@@ -81,12 +81,11 @@ export default function ScheduledMail({ scheduleMailData }) {
                   </Link>
                 </td>
                 <td className="px-9 py-4 ">
-                  <Link>
-                    <MdDelete
-                      size={20}
-                      onClick={() => Delete(u.scheduleMailID)}
-                    />
-                  </Link>
+                  <MdDelete
+                    size={20}
+                    className="cursor-pointer"
+                    onClick={() => Delete(u.scheduleMailID)}
+                  />
                 </td>
               </tr>
             ))}
