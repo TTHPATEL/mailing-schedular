@@ -74,7 +74,7 @@ export default function ScheduledmailedEdit() {
           <h1>Schedule Time : {scheduledMail.schedule}</h1>
         </div>
       </div>
-      <div style={{ margin: 120 }}>
+      <div style={{ marginTop: 80 }}>
         <form action={Updatescheduledmail} className="max-w-sm mx-auto">
           <label
             htmlFor="template"

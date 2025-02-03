@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -23,7 +22,6 @@ export default function Home() {
       .then((data) => setUserlists(data))
       .finally(() => setLoading(false));
   }, []);
-  // console.log(userlists);
 
   async function Addscheduledmail(formData) {
     const template = formData.get("template");
@@ -38,8 +36,6 @@ export default function Home() {
       .filter((user) => user.IDofcategoryList === categoryID)
       .map((user) => user.email);
 
-    console.log(filteredUsers);
-
     const res = await fetch("http://localhost:3012/api/scheduleMail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -52,8 +48,8 @@ export default function Home() {
     });
 
     if (res.ok) {
-      const newUser = await res.json();
-      console.log("New User Added STATUS:", newUser);
+      const resdata = await res.json();
+      console.log("Email is Scheduled!");
       router.push("scheduled-mail");
     } else {
       console.log("Error submitting the form");

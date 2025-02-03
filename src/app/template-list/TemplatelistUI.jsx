@@ -4,17 +4,6 @@ import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
 export default function TemplatelistUI({ TemplatelistData }) {
-  function Delete(IDofschedule) {
-    fetch("http://localhost:3012/delete/scheduleMail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ scheduleMailID: IDofschedule }),
-    })
-      .then((data) => data.json())
-      .then((data) => console.log(data));
-
-    router.push("scheduled-mail");
-  }
   return (
     <div className="relative overflow-x-auto max-w-lg mx-auto mt-10 bg-white shadow-lg rounded-lg">
       <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
@@ -49,12 +38,14 @@ export default function TemplatelistUI({ TemplatelistData }) {
               </td>
               <td className="px-4 py-3">{temp.template_name}</td>
               <td className="px-7 py-4 ">
-                <Link href={`/scheduled-mail-edit/${temp.template_id}`}>
+                <Link href={`#`}>
                   <BiSolidEdit size={20} />
                 </Link>
               </td>
               <td className="px-9 py-4 ">
-                <MdDelete size={20} onClick={() => Delete(temp.template_id)} />
+                <Link href={`#`}>
+                  <MdDelete size={20} />
+                </Link>
               </td>
             </tr>
           ))}

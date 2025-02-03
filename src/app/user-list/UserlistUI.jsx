@@ -2,9 +2,55 @@
 import Link from "next/link";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-export default function UserlistUI({ Userlistdata, categorylist }) {
-  function Adduser() {}
+import { useRouter } from "next/navigation";
 
+export default function UserlistUI({ Userlistdata, categorylist }) {
+  let router = useRouter();
+  async function Adduser(formData) {
+    const name = formData.get("name");
+    const emailid = formData.get("emailid");
+    const userSelectCategory = formData.get("recipient");
+
+    const categoryID = categorylist.find(
+      (c) => c.categoryName === userSelectCategory
+    )?.categoryID;
+
+    // const filteredUsers = Userlistdata.filter(
+    //   (user) => user.IDofcategoryList === categoryID
+    // ).map((user) => user.email);
+
+    // console.log(filteredUsers);
+
+    const res = await fetch("http://localhost:3012/api/userlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name,
+        email: emailid,
+        IDofcategoryList: categoryID,
+      }),
+    });
+
+    if (res.ok) {
+      const newUser = await res.json();
+      console.log(newUser);
+      router.push("user-list");
+    } else {
+      console.log("Error submitting the form");
+    }
+  }
+
+  function Delete(IDofuser) {
+    fetch("http://localhost:3012/delete/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: IDofuser }),
+    })
+      .then((data) => data.json())
+      .then((data) => console.log(data));
+
+    router.push("user-list");
+  }
   return (
     <>
       <div className="flex justify-center w-full">
@@ -24,7 +70,6 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
             />
           </div>
 
-          {/* Second Input Field */}
           <div>
             <label
               htmlFor="emailid"
@@ -85,7 +130,7 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
                 Email
               </th>
               <th scope="col" className="px-6 py-3">
-                Group Name
+                Group ID
               </th>
               <th scope="col" className="px-6 py-3">
                 Edit
@@ -109,9 +154,10 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
                 </th>
                 <td className="px-6 py-4">{u.name}</td>
                 <td className="px-6 py-4">{u.email}</td>
+
                 <td className="px-6 py-4">{u.IDofcategoryList}</td>
                 <td className="px-7 py-4 ">
-                  <Link href={`/scheduled-mail-edit/${u.id}`}>
+                  <Link href={"#"}>
                     <BiSolidEdit size={20} />
                   </Link>
                 </td>
