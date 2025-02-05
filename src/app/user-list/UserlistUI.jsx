@@ -117,7 +117,14 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
           </button>
         </form>
       </div>
-
+      <div style={{ marginLeft: "20%" }}>
+        <div>
+          <h4 style={{ color: "#FF8800" }}>
+            Recipient Category Group ID : 1 - New Joinees, 2 - HR Department, 3
+            - Marketing Team, 4 - Interns & Trainees, 5 - Executive Leadership
+          </h4>
+        </div>
+      </div>
       <div className="relative overflow-x-auto max-w-5xl mx-auto mt-[25px] bg-white shadow-lg rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-lg">
           <caption className="text-lg font-semibold text-gray-900 dark:text-white py-4 bg-gray-100 dark:bg-gray-800 rounded-t-lg">
