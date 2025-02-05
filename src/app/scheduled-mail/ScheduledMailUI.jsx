@@ -73,11 +73,7 @@ export default function ScheduledMail({ scheduleMailData }) {
                 <td className="px-6 py-4">{u.template}</td>
                 <td className="px-6 py-4">{u.recipientGroupName}</td>
                 <td className="px-6 py-4">{u.recipient.join(" , ")}</td>
-                <td className="px-6 py-4">
-                  {" "}
-                  IST TIME : {u.scheduleinIST}
-                  UTC : {u.schedule}{" "}
-                </td>
+                <td className="px-6 py-4">{u.scheduleinIST}</td>
                 <td className="px-6 py-4">{u.status}</td>
                 <td className="px-7 py-4 ">
                   <Link href={`/scheduled-mail-edit/${u.scheduleMailID}`}>

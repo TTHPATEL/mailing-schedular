@@ -81,6 +81,10 @@ export default function ScheduledmailedEdit() {
           <h1>Template ( Mailer ) : {scheduledMail.template}</h1>
           <h1>Recipient List : {scheduledMail.recipientGroupName}</h1>
           <h1>Schedule Time : {scheduledMail.schedule}</h1>
+          <h1>
+            Schedule Time : IST : {scheduledMail.scheduleinIST} | UTC :{" "}
+            {scheduledMail.schedule}
+          </h1>
         </div>
       </div>
       <div style={{ marginTop: 80 }}>
