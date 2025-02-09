@@ -75,9 +75,9 @@ export default function ScheduledmailedEdit() {
   }
   return (
     <>
-      <div style={{ marginLeft: "40%", marginTop: "5%" }}>
+      <div style={{ marginLeft: "37.5%", marginTop: "5%" }}>
         <div>
-          <h1 style={{ color: "red" }}>Existing Data Details</h1>
+          <h1 style={{ color: "#FF8800" }}>Existing Data Details</h1>
           <h1>Template ( Mailer ) : {scheduledMail.template}</h1>
           <h1>Recipient List : {scheduledMail.recipientGroupName}</h1>
           <h1>Schedule Time : {scheduledMail.schedule}</h1>
