@@ -169,7 +169,7 @@ export default function UserlistUI({ Userlistdata, categorylist }) {
                   }
                 </td>
                 <td className="px-7 py-4 ">
-                  <Link href={"#"}>
+                  <Link href={`/user-edit/${u.id}`}>
                     <BiSolidEdit size={20} />
                   </Link>
                 </td>
