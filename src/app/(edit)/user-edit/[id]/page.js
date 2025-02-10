@@ -70,6 +70,13 @@ export default function useredit() {
       console.log("Error submitting the form");
     }
   }
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+      </div>
+    );
+  }
   return (
     <>
       <div style={{ marginLeft: "37.5%", marginTop: "5%" }}>
@@ -94,7 +101,7 @@ export default function useredit() {
             name="name"
             value={user.name || ""}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-[70%] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
           <br />
@@ -110,7 +117,7 @@ export default function useredit() {
             name="emailid"
             value={user.email || ""}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-[70%] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br /> <br />
           <label
@@ -122,7 +129,7 @@ export default function useredit() {
           <select
             id="recipient"
             name="recipient"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-[70%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             {categorylist.map((ulist) => (
               <option key={ulist.categoryID}>{ulist.categoryName}</option>
